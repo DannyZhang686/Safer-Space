@@ -53,7 +53,7 @@ def checker():
     # Create and return the response object, making sure to allow the
     # requesting service to access it properly (CORS)
     resp = make_response(jsonify(response=result), 200)
-    resp.headers['Access-Control-Allow-Origin'] = "http://localhost:4830"
+    resp.headers['Access-Control-Allow-Origin'] = "*"
     return resp
   else:
     return make_response(jsonify('Welcome to my webapp :)'), 200)

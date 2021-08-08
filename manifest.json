@@ -7,7 +7,7 @@
     "service_worker": "background.js"
   },
   "content_scripts": [{
-    "js": ["content.js"],
+    "js": [ "third-party/jquery-1.12.0.min.js", "content.js" ],
     "matches" : ["<all_urls>"]
   }],
   "action": {
@@ -19,9 +19,10 @@
       "128": "/images/logo128.png"
     }
   },
-  "web_accessible_resoures": [
+  "web_accessible_resurces": [
     {
-      "resources": ["popup.js"]
+      "resources": ["popup.js"],
+      "hi": ["asdf"]
     }
   ],
   "icons": {
