@@ -11,7 +11,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     
   </head>
-  <body class="output" onload="blur">
+  <body class="output">
 
     <div class="content">
 
@@ -54,7 +54,7 @@
           <!-- Slider -->
           <span class="center">
             <label class="switch">
-              <input type="checkbox" id="raceOn" name="raceOn" checked> 
+              <input type="checkbox" id="raceOn" name="raceOn" value="true"> 
               <!-- **chnge debug to something more descriptiev + change the popup.js and content.js -->
               <span class="slider round"></span>
             </label>
@@ -62,7 +62,7 @@
             
           <!-- Colour Picker -->
           <span>
-            <input type="color" id="raceColourPick" value="#e66465">
+            <input type="color" id="raceColour" value="#e66465">
           </span>
           
           <!-- Sensitivity Dropdown -->
@@ -86,7 +86,7 @@
     <script type="text/javascript" src="content.js"></script> -->
 
     <script type="module" src="./popup.js"></script>
-    <script type="module" src="./content.js"></script>
+    <!-- <script type="module" src="./content.js"></script> -->
 
   </body>
 </html>

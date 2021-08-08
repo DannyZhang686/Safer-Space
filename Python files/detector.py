@@ -1,9 +1,14 @@
-from flask import Flask, jsonify, request, render_template
+from flask import Flask, request, make_response, jsonify
+import random
+
 import pickle
 import nltk
 from nltk.corpus import stopwords
-from nltk.tokenize import sent_tokenize, word_tokenize
+from nltk.tokenize import word_tokenize
 from nltk.stem.snowball import SnowballStemmer
+
+# Initialize the app
+app = Flask(__name__)
 
 # Load the list of filler words and the word stemmer
 stopWords = set(stopwords.words('english'))
@@ -31,28 +36,27 @@ def stringToDict(inputStr):
       answer[wordStemmer.stem(word)] = 0
   return answer
 
-def check(inputStr):
-  # This function checks whether the given string should be censored
-  if classifier.classify(stringToDict(str(inputStr))) == 1:
-    # A return value of 1 in the classification function means that
-    # the string is offensive, and a return value of 0 means that
-    # it is not offensive according to the classifier.
-    return True
-  return False
-
-@app.route('/check', methods=['GET', 'POST'])
-def requestHandler():
-  # GET request
-  if request.method == 'GET':
-    content = request.get_json()
-    returnVal = {'response': check(content['text'])}
-    return jsonify(returnVal)  # Use JSON
-  # POST request
+@app.route('/', methods=['GET', 'POST'])
+def checker():
   if request.method == 'POST':
-    print(request.get_json())  # Parse as JSON
-    return 'Success', 200
+    # Get the JS data and print it for debugging, to verify it got through correctly
+    checkString = request.form['inputString']
+    print("Got this from JS: " + checkString)
 
-#########  Run the app  #########
+    # Use the classifier on the input string
+    result = (classifier.classify(stringToDict(str(checkString))) == 1)
+    # A return value of 1 here means that the string is offensive, and a
+    # return value of 0 means it isn't (both according to the algorithm).
+    
+    # Verify the return value on the Python side (for debugging)
+    print("Python return val is " + str(result))
+    # Create and return the response object, making sure to allow the
+    # requesting service to access it properly (CORS)
+    resp = make_response(jsonify(response=result), 200)
+    resp.headers['Access-Control-Allow-Origin'] = "http://localhost:4830"
+    return resp
+  else:
+    return make_response(jsonify('Welcome to my webapp :)'), 200)
 
-app = Flask(__name__)
-app.run(debug=True)
+if __name__ == "__main__":
+  app.run(debug = True)

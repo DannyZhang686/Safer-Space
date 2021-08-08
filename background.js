@@ -1,13 +1,4 @@
-alert("running");
-
-//chrome.tabs.onActivated.addListener(tab => {
-//    chrome.tabs.get(tab.tabId, current_tab_info => {
-//        if (/^https:\/\/www\.google/.test(current_tab_info.url)) {
-//            chrome.tabs.insertCSS(null, { file: './button.css' });
-//            chrome.tabs.executeScript(null, { file: './foreground.js' }, () => console.log('works'));
-//        }
-//    });
-//});
+console.log("running");
 
 chrome.storage.onChanged.addListener(function (changes, namespace) {
   for (let [key, { oldValue, newValue }] of Object.entries(changes)) {
@@ -26,35 +17,3 @@ chrome.storage.onChanged.addListener((changes, area) => {
     setDebugMode(debugMode);
   }
 });
-
-// function disableExtension(disabled)
-// {
-//     chrome.windows.getAll({populate : true}, function (window_list)
-//     {
-//         for (var i = 0; i < window_list.length; ++i)
-//         {
-//             var window = window_list[i];
-//             for (var j = 0; j < window.tabs.length; ++j)
-//             {
-//                 var tab = window.tabs[j];
-//                 if (checkContentScriptExists(tab))
-//                 {
-//                     chrome.tabs.executeScript(tab.id, {code : "disabled = " + disabled + ";"}) 
-//                 }
-//             }
-//         }
-//         // No matching url found. Open it in the new tab
-//         chrome.tabs.create({ url : url, selected: true });
-//     });
-// }
-
-// function disableExtension(disabled)
-// {
-//     global.disabled = disabled;
-// }
-// chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
-//     if (request.msg == "getDisabled") {
-//         sendResponse({disabled: global.disabled});
-//         return true;
-//     }
-// });
