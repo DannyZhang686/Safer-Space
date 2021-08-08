@@ -1,6 +1,6 @@
 {
   "name": "Quellie Hacks Extension",
-  "description": "Flags and hides discriminatory content!",
+  "description": "Hides discriminatory content!",
   "version": "1.0",
   "manifest_version": 3,
   "background": {

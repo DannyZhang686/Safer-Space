@@ -24,7 +24,7 @@
         <img src="/images/logo48.png"> 
 
         <span id="name" padding-left="10px">
-          AntiDiscriminator
+          Safer Space
         </span>
         <br><br>
 
@@ -58,14 +58,13 @@
           <span class="center">
             <label class="switch">
               <input type="checkbox" id="raceOn" name="raceOn" value="true"> 
-              <!-- **chnge debug to something more descriptiev + change the popup.js and content.js -->
               <span class="slider round"></span>
             </label>
           </span>
             
           <!-- Colour Picker -->
           <span>
-            <input type="color" id="raceColour" value="#e66465">
+            <input type="color" id="raceColour" value="#3F88C5">
           </span>
           
           <!-- Sensitivity Dropdown -->
@@ -78,11 +77,93 @@
             </select>
           </span>
 
-      </form>
+        </form>
 
       </div>
 
+      <br><br>
+      <hr>
+
+      <!-- Gender Identity Section -->
+      <div class="discrimination-section container">
+        
+        <!-- Title -->
+        <h4>
+          Gender Identity
+        </h4>
+
+        <form id="genderForm">
+
+          <!-- Slider -->
+          <span class="center">
+            <label class="switch">
+              <input type="checkbox" id="genderOn" name="genderOn" value="true"> 
+              <span class="slider round"></span>
+            </label>
+          </span>
+            
+          <!-- Colour Picker -->
+          <span>
+            <input type="color" id="genderColour" value="#17B081">
+          </span>
+          
+          <!-- Sensitivity Dropdown -->
+          <span>
+            <select class="form-control" id="genderSensitivity" style="width:120px; display:inline-block; font-family: 'Pavanam', sans-serif;">
+              <option value="0" selected disabled>Sensitivity</option>
+              <option value="1">Light</option>
+              <option value="2">Mild</option>
+              <option value="3">Heavy</option>
+            </select>
+          </span>
+
+        </form>
+
+      </div>
+      
+      <br><br>
+      <hr>
+
+      <!-- Body Type Section -->
+      <div class="discrimination-section container">
+        
+        <!-- Title -->
+        <h4>
+          Body Type
+        </h4>
+
+        <form id="bodyForm">
+
+          <!-- Slider -->
+          <span class="center">
+            <label class="switch">
+              <input type="checkbox" id="bodyOn" name="bodyOn" value="true"> 
+              <span class="slider round"></span>
+            </label>
+          </span>
+            
+          <!-- Colour Picker -->
+          <span>
+            <input type="color" id="bodyColour" value="#3F88C5">
+          </span>
+          
+          <!-- Sensitivity Dropdown -->
+          <span>
+            <select class="form-control" id="bodySensitivity" style="width:120px; display:inline-block; font-family: 'Pavanam', sans-serif;">
+              <option value="0" selected disabled>Sensitivity</option>
+              <option value="1">Light</option>
+              <option value="2">Mild</option>
+              <option value="3">Heavy</option>
+            </select>
+          </span>
+
+        </form>
+
+      </div>
+      
     </div>
+
+
 
     <!-- <div id="output2"></div> -->
     <!-- <script type="text/javascript" src="popup.js"></script>

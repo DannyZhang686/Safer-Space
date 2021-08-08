@@ -29,18 +29,29 @@ function checker(inputStr) {
 }
 
 function refresh() {
-  chrome.storage.sync.get(['raceOn', 'raceColour', 'raceSensitivity'], function (data) {
+  chrome.storage.sync.get(['raceOn', 'raceColour', 'raceSensitivity', 'genderOn', 'genderColour', 'genderSensitivity'], function (data) {
 
     // Get HTML elements of the page 
     let text = document.querySelectorAll('h1, h2, h3, h4, h5, p, li, td, caption, span, a, em, code');
-    
-    var element, originalTextColor;
+    var element, raceOriginalTextColor, genderOriginalTextColor, bodyOriginalTextColor;
+
+    // Race / Ethnicity 
     var raceOn = data["raceOn"];
     var raceColour = data["raceColour"];
     var raceSensitivity = data["raceSensitivity"];
+    // Gender Identity 
+    var genderOn = data["genderOn"];
+    var genderColour = data["genderColour"];
+    var genderSensitivity = data["genderSensitivity"];
+    // Body Type
+    var bodyOn = data["bodyOn"];
+    var bodyColour = data["bodyColour"];
+    var bodySensitivity = data["bodySensitivity"];
 
     // Log variables
-    console.log("Content.js\nraceOn " +  raceOn + "\ncolour " +  raceColour+ "\ncolour " +  raceSensitivity); 
+    console.log("Content.js\nrace " +  raceOn + "\ncolour " +  raceColour+ "\nsensitivity " +  raceSensitivity); 
+    console.log("Content.js\ngender " +  genderOn + "\ncolour " +  genderColour+ "\nsensitivity " +  genderSensitivity); 
+    console.log("Content.js\nbody " +  bodyOn + "\ncolour " +  bodyColour+ "\nsensitivity " +  bodySensitivity); 
     
     ///////////////////////////////////
     //  Check for Race / Ethnicity   //
@@ -49,72 +60,159 @@ function refresh() {
     if (raceOn) {
 
       // Iterate through the HTML page's elements 
-      console.log("list length " + text.length);
       for (element of text) {
 
         // Check if discrimination is there 
         if (element.innerHTML.length > 5) {
   
-          // if (element.innerHTML.toLowerCase().includes("text")) {
-
           if (checker(String(element.innerHTML.toLowerCase()))) {
-
-            console.log("we're here " + element.innerHTML);
             
-            originalTextColor = element.style.color;
-            if (originalTextColor == "" || originalTextColor == "transparent") originalTextColor = "black";
+            raceOriginalTextColor = element.style.color;
+            if (raceOriginalTextColor == "" || raceOriginalTextColor == "transparent") raceOriginalTextColor = "black";
 
             // Blur text 
             element.style['color'] = "transparent";
-            // element.style['text-shadow'] =  "0 0 8px rgba(255, 0, 0, 0.5)";
             element.style['text-shadow'] =  "0 0 8px" + raceColour;
           
             // Unblur text on hover  
             element.addEventListener("mouseover", function(event) {
-              event.target.style['color'] = originalTextColor; 
+              event.target.style['color'] = raceOriginalTextColor; 
               event.target.style['text-shadow'] = "none";
             }, false);
             
             // Blur text when no longer hovering  
             element.addEventListener("mouseout", function(event) {
               event.target.style['color'] = "transparent";
-              event.target.style['text-shadow'] = "0 0 8px rgba(255, 0, 0, 0.5)";
+              event.target.style['text-shadow'] = "0 0 8px" + raceColour;
             }, false);
 
           }
-
         }
-        
       } 
-      
     } else {
 
       // Iterate through the HTML page's elements 
       for (element of text) {
 
         // Check if discrimination is there 
-        if (element.innerHTML.toLowerCase().includes("text")) {
+        if (element.innerHTML.toLowerCase().includes("company")) {
           
-          originalTextColor = element.style.color;
-          if (originalTextColor == "" || originalTextColor == "transparent") originalTextColor = "black";
+          raceOriginalTextColor = element.style.color;
+          if (raceOriginalTextColor == "" || raceOriginalTextColor == "transparent") raceOriginalTextColor = "black";
 
           // Unblur text 
-          element.style['color'] = originalTextColor; 
+          element.style['color'] = raceOriginalTextColor; 
           element.style['text-shadow'] = "none";
 
-          // element.removeEventListener("mouseover", function(event) {
-          //   // Unblur text 
-          //   console.log("originalTextColor", originalTextColor);
-          //   event.target.style['color'] = originalTextColor; 
-          //   event.target.style['text-shadow'] = "none";
-          // }, false);
+        }
+      }
+    }
 
-          // element.removeEventListener("mouseout", function(event) {
-          //   // Unblur text 
-          //   console.log("originalTextColor", originalTextColor);
-          //   event.target.style['color'] = originalTextColor; 
-          //   event.target.style['text-shadow'] = "none";
-          // }, false);
+    //////////////////////////////////
+    //  Check for Gender Identity   //
+    //////////////////////////////////
+
+    if (genderOn) {
+
+      // Iterate through the HTML page's elements 
+      for (element of text) {
+
+        // Check if discrimination is there 
+        if (element.innerHTML.length > 5) {
+  
+          if (checker(String(element.innerHTML.toLowerCase()))) {
+            
+            genderOriginalTextColor = element.style.color;
+            if (genderOriginalTextColor == "" || genderOriginalTextColor == "transparent") genderOriginalTextColor = "black";
+
+            // Blur text 
+            element.style['color'] = "transparent";
+            element.style['text-shadow'] =  "0 0 8px" + genderColour;
+          
+            // Unblur text on hover  
+            element.addEventListener("mouseover", function(event) {
+              event.target.style['color'] = genderOriginalTextColor; 
+              event.target.style['text-shadow'] = "none";
+            }, false);
+            
+            // Blur text when no longer hovering  
+            element.addEventListener("mouseout", function(event) {
+              event.target.style['color'] = "transparent";
+              event.target.style['text-shadow'] = "0 0 8px" + genderColour;
+            }, false);
+
+          }
+        }
+      } 
+    } else {
+
+      // Iterate through the HTML page's elements 
+      for (element of text) {
+
+        // Check if discrimination is there 
+        if (element.innerHTML.toLowerCase().includes("costs")) {
+          
+          genderOriginalTextColor = element.style.color;
+          if (genderOriginalTextColor == "" || genderOriginalTextColor == "transparent") genderOriginalTextColor = "black";
+
+          // Unblur text 
+          element.style['color'] = genderOriginalTextColor; 
+          element.style['text-shadow'] = "none";
+
+        }
+      }
+    }
+
+    ////////////////////////////
+    //  Check for Body Type   //
+    ////////////////////////////
+
+    if (bodyOn) {
+
+      // Iterate through the HTML page's elements 
+      for (element of text) {
+
+        // Check if discrimination is there 
+        if (element.innerHTML.length > 5) {
+  
+          if (checker(String(element.innerHTML.toLowerCase()))) {
+            
+            bodyOriginalTextColor = element.style.color;
+            if (bodyOriginalTextColor == "" || bodyOriginalTextColor == "transparent") bodyOriginalTextColor = "black";
+
+            // Blur text 
+            element.style['color'] = "transparent";
+            element.style['text-shadow'] =  "0 0 8px" + bodyColour;
+          
+            // Unblur text on hover  
+            element.addEventListener("mouseover", function(event) {
+              event.target.style['color'] = bodyOriginalTextColor; 
+              event.target.style['text-shadow'] = "none";
+            }, false);
+            
+            // Blur text when no longer hovering  
+            element.addEventListener("mouseout", function(event) {
+              event.target.style['color'] = "transparent";
+              event.target.style['text-shadow'] = "0 0 8px" + bodyColour;
+            }, false);
+
+          }
+        }
+      } 
+    } else {
+
+      // Iterate through the HTML page's elements 
+      for (element of text) {
+
+        // Check if discrimination is there 
+        if (element.innerHTML.toLowerCase().includes("frames")) {
+          
+          bodyOriginalTextColor = element.style.color;
+          if (bodyOriginalTextColor == "" || bodyOriginalTextColor == "transparent") bodyOriginalTextColor = "black";
+
+          // Unblur text 
+          element.style['color'] = bodyOriginalTextColor; 
+          element.style['text-shadow'] = "none";
 
         }
       }
@@ -122,56 +220,11 @@ function refresh() {
   });
 }
 
-// function refreshOriginal() {
-
-//   let text = document.querySelectorAll('h1, h2, h3, h4, h5, p, li, td, caption, span, a, em, code');
-//   var raceOn;
-//   var element, originalTextColor;
-
-//   // Iterate through the HTML page's elements 
-//   for (element of text) {
-
-//     // Check for Race / Ethnicity 
-//     raceOn = "on";
-//     if (raceOn == "on") {
-//       if (element.innerHTML.toLowerCase().includes("text")) {
-//         console.log("elem", element);
-        
-//         originalTextColor = element.style.color;
-//         if (originalTextColor == "" || originalTextColor == "transparent") originalTextColor = "black";
-
-//         // Blur text 
-//         element.style['color'] = "transparent";
-//         element.style['text-shadow'] =  "0 0 8px rgba(255, 0, 0, 0.5)";
-
-//         element.addEventListener("mouseover", function(event) {
-//           // Unblur text 
-//           console.log("originalTextColor", originalTextColor);
-//           event.target.style['color'] = originalTextColor; //event.target.style['color'] = "black";
-//           event.target.style['text-shadow'] = "none";
-//         }, false);
-
-//         element.addEventListener("mouseout", function(event) {
-//           // Blur text 
-//           event.target.style['color'] = "transparent";
-//           event.target.style['text-shadow'] = "0 0 8px rgba(255, 0, 0, 0.5)";
-//         }, false);
-
-//       }
-//     }   
-//   }
-// }
-
-// Search page for occurences of words on the blacklist and blurs out certain elements that contain them.
-// Sets up hover handlers so that elements are unblurred on mouseover.
-// Loops once a second to account for with DOM changes initiated by the website.
 function refreshLoop() {
   console.log("here we go again");
   refresh();
-  // console.log("human" + checker("human"));
-  setTimeout(refreshLoop, 10000);
+  setTimeout(refreshLoop, 1000);
 }
 
-// refreshOriginal();
 // Initiates refresh loop 
 refreshLoop();

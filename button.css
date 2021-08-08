@@ -17,28 +17,10 @@
 /* text in body default to pavanam */
 body {
   font-family: 'Pavanam', sans-serif;
-  /* font-style: normal;
-  font-weight: normal; */
-  /*font-size: 18px;
-  line-height: 23px;*/
 }
-
-/* .short-div {
-  height: 40px;
-}
-
-.long-div {
-  height: 80px;
-} */
 
 /* anti-discriminator title */
 #name {
-  /* position: absolute; */
-  /* width: 207px;
-  height: 30px;
-  left: 133px; 
-  top: 48px; */
-
   font-family: 'Poppins', sans-serif;
   font-size: 24px;
   line-height: 36px;
@@ -48,21 +30,18 @@ body {
 
 hr {
   width: 350px;
-  padding-bottom: 4px;
+  padding-bottom: -10px;
 }
 
 .output {
   width: 400px;
-  height: 600px;
-  /* font-family: 'Noto Sans JP', sans-serif; */
+  height: 640px;
   font-size: 13px;
   text-align: center;
 }
 
 .button {
-  /* background-color: var(--pink);  */
   border: none;
-  /* color: white; */
   padding: 12px 32px;
   text-align: center;
   text-decoration: none;
@@ -76,13 +55,6 @@ hr {
   border: 2px solid var(--pink);
   border-radius: 40px;
 }
-
-/* .button1 {
-  background-color: white; 
-  color: black; 
-  border: 2px solid var(--pink);
-  border-radius: 40px;
-} */
 
 .button:hover {
   background-color: var(--pink);
@@ -100,7 +72,6 @@ hr {
 
 .switch {
   position: relative;
-  /* display: inline-block; */
   margin-top: 5px;
   width: 60px;
   height: 30px;
@@ -150,7 +121,6 @@ input:checked + .slider:before {
   transform: translateX(26px);
 }
 
-/* Rounded sliders */
 .slider.round {
   border-radius: 34px;
 }
@@ -159,15 +129,12 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
-/* Discrimination section */
-
 .discrimination-section {
   height: 40px;
 }
 
 .center {
   text-align: center;
-  /* border: 3px solid green; */
 }
 
 span {
@@ -189,21 +156,6 @@ span {
 }
 
 .blur {
-  /* blur */
   color: transparent;
   text-shadow: 0 0 8px rgba(255, 0, 0, 0.5);
-  /* spoiler */
-  /* -webkit-filter: blur(5px);
-  -moz-filter: blur(5px);
-  -o-filter: blur(5px);
-  -ms-filter: blur(5px);
-  filter: blur(5px); */
-  
-  /* Glow */
-  /* color:transparent;
-  text-shadow: 0 0 4px rgba(0,0,0,0.5);
-  text-align: center;
-  -webkit-animation: blur 1s ease-in-out infinite alternate;
-  -moz-animation: blur 1s ease-in-out infinite alternate;
-  animation: blur 1s ease-in-out infinite alternate; */
 }
