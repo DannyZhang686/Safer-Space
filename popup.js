@@ -1,13 +1,6 @@
 var value = "lelele";
 
-// 
-
-// 
-
-// function init() {
-  chrome.storage.sync.clear();
-  // console.log("init()");
-// }
+// chrome.storage.sync.clear();
 
 // alert("page restarted")
 chrome.storage.sync.set({key: value}, function() {
@@ -48,15 +41,7 @@ function newLoad() {
 // Immediately persist options changes
 raceForm.raceOn.addEventListener('change', (event) => {
   chrome.storage.sync.get("raceOn", function(items) {
-    
-    // var raceOnItem = items["raceOn"];
-    // if (items["raceOn"] === undefined) {
-    //   raceOnItem = raceOn.value;
-    //   console.log("raceOn set " + raceOnItem)
-    // }
-    var race = raceOn.checked;
-    chrome.storage.sync.set({"raceOn" : race});
-    console.log("bruhhhH");
+    chrome.storage.sync.set({"raceOn" : raceOn.checked});
   })
 });
 
