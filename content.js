@@ -1,32 +1,15 @@
 // Race / Ethnicity 
 
 function refresh() {
-  chrome.storage.sync.get(['raceOn', 'raceColour'], function (data) {
-    // chrome.storage.sync.set({ 'raceOn' : data["raceOn"] });
-    // alert("raceOn content in storage sync " +  data.raceOn + "\nraceOn.value: " + raceOn.value); 
+  chrome.storage.sync.get(['raceOn', 'raceColour', 'raceSensitivity'], function (data) {
     console.log("data.raceOn in content.js " +  data["raceOn"] + "\ntype data.raceOn " +  typeof(data["raceOn"])); 
     console.log("data.raceColour in content.js " +  data["raceColour"] + "\ntype data.raceColour " +  typeof(data["raceColour"])); 
-    // console.log("raceOn content in storage sync      " +  raceOn + "\ntype raceOn " +  typeof(raceOn)); 
-    // refresh();
+    console.log("data.raceSensitivity in content.js " +  data["raceSensitivity"] + "\ntype data.raceSensitivity " +  typeof(data["raceSensitivity"])); 
+
   });
 }
 
 var regexNeedsUpdate = true;
-
-// chrome.storage.sync.get('raceColour', function (data) {
-//   chrome.storage.sync.set({ 'raceColour': data.getColour });
-//   alert("raceColour" +  data.raceColour + "endcolour"); 
-// });
-
-
-// raceForm.raceOn.addEventListener('change', (event) => {
-//   options.raceOn = event.target.checked;
-//   chrome.storage.sync.set({options});
-//   refresh();
-// });
-
-// raceOn = chrome.storage.sync.get('raceOn');
-// console.log("raceOn outside of any loops |" + raceOn);
 
 function refreshOriginal() {
 
