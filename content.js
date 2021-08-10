@@ -48,6 +48,11 @@ function refresh() {
     var bodyColour = data["bodyColour"];
     var bodySensitivity = data["bodySensitivity"];
 
+    // Category keywords (for demo)   
+    var raceKeyWord = "company";
+    var genderKeyWord = "costs";
+    var bodyKeyWord = "eyewear";
+
     // Log variables
     console.log("Content.js\nrace " +  raceOn + "\ncolour " +  raceColour+ "\nsensitivity " +  raceSensitivity); 
     console.log("Content.js\ngender " +  genderOn + "\ncolour " +  genderColour+ "\nsensitivity " +  genderSensitivity); 
@@ -65,7 +70,8 @@ function refresh() {
         // Check if discrimination is there 
         if (element.innerHTML.length > 5) {
   
-          if (checker(String(element.innerHTML.toLowerCase()))) {
+          if (element.innerHTML.toLowerCase().includes(raceKeyWord)) {
+          // if (checker(String(element.innerHTML.toLowerCase()))) {
             
             raceOriginalTextColor = element.style.color;
             if (raceOriginalTextColor == "" || raceOriginalTextColor == "transparent") raceOriginalTextColor = "black";
@@ -95,7 +101,7 @@ function refresh() {
       for (element of text) {
 
         // Check if discrimination is there 
-        if (element.innerHTML.toLowerCase().includes("company")) {
+        if (element.innerHTML.toLowerCase().includes(raceKeyWord)) {
           
           raceOriginalTextColor = element.style.color;
           if (raceOriginalTextColor == "" || raceOriginalTextColor == "transparent") raceOriginalTextColor = "black";
@@ -120,7 +126,8 @@ function refresh() {
         // Check if discrimination is there 
         if (element.innerHTML.length > 5) {
   
-          if (checker(String(element.innerHTML.toLowerCase()))) {
+          if (element.innerHTML.toLowerCase().includes(genderKeyWord)) {
+          // if (checker(String(element.innerHTML.toLowerCase()))) {
             
             genderOriginalTextColor = element.style.color;
             if (genderOriginalTextColor == "" || genderOriginalTextColor == "transparent") genderOriginalTextColor = "black";
@@ -150,7 +157,7 @@ function refresh() {
       for (element of text) {
 
         // Check if discrimination is there 
-        if (element.innerHTML.toLowerCase().includes("costs")) {
+        if (element.innerHTML.toLowerCase().includes(genderKeyWord)) {
           
           genderOriginalTextColor = element.style.color;
           if (genderOriginalTextColor == "" || genderOriginalTextColor == "transparent") genderOriginalTextColor = "black";
@@ -175,7 +182,8 @@ function refresh() {
         // Check if discrimination is there 
         if (element.innerHTML.length > 5) {
   
-          if (checker(String(element.innerHTML.toLowerCase()))) {
+          if (element.innerHTML.toLowerCase().includes(bodyKeyWord)) {
+          // if (checker(String(element.innerHTML.toLowerCase()))) {
             
             bodyOriginalTextColor = element.style.color;
             if (bodyOriginalTextColor == "" || bodyOriginalTextColor == "transparent") bodyOriginalTextColor = "black";
@@ -205,7 +213,7 @@ function refresh() {
       for (element of text) {
 
         // Check if discrimination is there 
-        if (element.innerHTML.toLowerCase().includes("frames")) {
+        if (element.innerHTML.toLowerCase().includes(bodyKeyWord)) {
           
           bodyOriginalTextColor = element.style.color;
           if (bodyOriginalTextColor == "" || bodyOriginalTextColor == "transparent") bodyOriginalTextColor = "black";
